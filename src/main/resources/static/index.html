@@ -4,61 +4,66 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script type="application/javascript" src="index.js"></script> <!-- Links this html file to js file and allows us
                  to use scripts-->
 </head>
-<body>
-<h1>Bestilling av kinobiletter</h1>
-<section> <!-- Starting the section of code for the first "excersise" -->
-    <label for=chooseFilm>Velg film:</label> <!-- Label allows me to write a text in front of option bar -->
-    <select id="chooseFilm"> <!-- I select the label over and make an option bar for it -->
-        <option value="film1">Film1</option> <!-- Here the list of options start (didn`t come up with something better than these names) -->
-        <option value="film2">Film2</option>
-        <option value="film3">Film3</option>
-        <option value="film4">Film4</option>
-        <option value="film5">Film5</option>
-    </select>
-</section>
-
-<div style="height: 30px;"></div>
-
-<section>
-    <label for=nrOfTickets>Antall biletter:</label> <!-- Label allows me to write a text in front of text bar -->
-    <input id="nrOfTickets" type="text"><span id="errorNumbers" class="error" style="color: red;"></span>
-</section>
-
-<div style="height: 30px;"></div> <!-- Making gap so that it looks prettier -->
-
-<section> <!-- Starting the section of code for the third "excersise" -->
-    <label for=name>Fornavn:</label> <!-- Label allows me to write a text in front of text bar -->
-    <input id="name" type="text"><span id="needToWriteSomething" class="error" style="color: red;"></span>
-</section>
-
-<section> <!-- Starting the section of code for the fourth "excersise" -->
-    <label for=surname>Etternavn:</label> <!-- Label allows me to write a text in front of text bar -->
-    <input id="surname" type="text"><span id="needToWriteSomething2" class="error" style="color: red;"></span>
-</section>
-
-<section> <!-- Starting the section of code for the fifth "excersise" -->
-    <label for=phonenr>Telefonnr:</label> <!-- Label allows me to write a text in front of text bar -->
-    <input id="phonenr" type="text"><span id="needNumber" class="error" style="color: red;"></span>
-</section>
-
-<section> <!-- Starting the section of code for the sixth "excersise" -->
-    <label for=email>E-post:</label> <!-- Label allows me to write a text in front of text bar -->
-    <input id="email" type="text"><span id="validEmail" class="error" style="color: red;"></span>
-</section>
-
-<div style="height: 30px;"></div> <!-- Making gap so that it looks prettier -->
-
-<button onclick="searchFail()">Kjøp biletter</button> <!-- Button to register orders and search for input fails -->
-<div id="ticketOrderTable"></div>
+    <body>
+        <h1>Bestilling av kinobiletter</h1>
 
 
-<div style="height: 30px;"></div> <!-- Making gap so that it looks prettier -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <form class="form">
+                        <div class="form-group">
+                                <label for=chooseFilm>Velg film:</label> <!-- Label allows me to write a text in front of option bar -->
+                                <select id="chooseFilm" class="form-select form-select-lg"> <!-- I select the label over and make an option bar for it -->
+                                    <option selected>Klikk her for å velge film</option>
+                                    <option value="film1">Film1</option> <!-- Here the list of options start (didn`t come up with something better than these names) -->
+                                    <option value="film2">Film2</option>
+                                    <option value="film3">Film3</option>
+                                    <option value="film4">Film4</option>
+                                    <option value="film5">Film5</option>
+                                </select>
+                        </div>
 
-<h2>Alle biletter</h2>
+                        <div class="form-group">
+                            <label for=nrOfTickets>Antall biletter:</label> <!-- Label allows me to write a text in front of text bar -->
+                            <input id="nrOfTickets" type="text" class="form-control"><span id="errorNumbers" class="error" style="color: red;"></span>
+                        </div>
 
-<button onclick="deleteAllOrders()">Slett alle bilettene</button> <!-- Button to delete everything we have inn the array -->
-</body>
+                        <div class="form-group">
+                            <label for=name>Fornavn:</label> <!-- Label allows me to write a text in front of text bar -->
+                            <input id="name" type="text" class="form-control"><span id="needToWriteSomething" class="error" style="color: red;"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for=surname>Etternavn:</label> <!-- Label allows me to write a text in front of text bar -->
+                            <input id="surname" type="text" class="form-control"><span id="needToWriteSomething2" class="error" style="color: red;"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for=phonenr>Telefonnr:</label> <!-- Label allows me to write a text in front of text bar -->
+                            <input id="phonenr" type="text" class="form-control"><span id="needNumber" class="error" style="color: red;"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for=email>E-post:</label> <!-- Label allows me to write a text in front of text bar -->
+                            <input id="email" type="text" class="form-control"><span id="validEmail" class="error" style="color: red;"></span>
+                        </div>
+
+                    </form>
+                        <button class="btn btn-primary" onclick="searchFail()">Kjøp biletter</button> <!-- Button to register orders and search for input fails -->
+                </div>
+
+                <div class="col-md-8">
+
+                    <h2>Alle biletter</h2>
+                    <div id="ticketOrderTable" class="table-responsive"></div>
+                    <button class="btn btn-danger" onclick="deleteAllOrders()">Slett alle bilettene</button> <!-- Button to delete everything we have inn the array -->
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

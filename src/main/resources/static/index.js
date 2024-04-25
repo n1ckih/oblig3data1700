@@ -1,40 +1,33 @@
-// Making array where we will store our orders
+// Array to store orders
 var ticketOrders = [];
 
 // Function for the button to check if input text is right
 function searchFail() {
-    var nrOfTickets = document.getElementById("nrOfTickets").value;
-    var name = document.getElementById("name").value;
-    var surname = document.getElementById("surname").value;
-    var phonenr = document.getElementById("phonenr").value;
-    var email = document.getElementById("email").value;
+    // Get input values
+    var nrOfTickets = $("#nrOfTickets").val();
+    var name = $("#name").val();
+    var surname = $("#surname").val();
+    var phonenr = $("#phonenr").val();
+    var email = $("#email").val();
 
     // Perform input validation
-    document.getElementById("errorNumbers").textContent = "";
-    document.getElementById("needToWriteSomething").textContent = "";
-    document.getElementById("needToWriteSomething2").textContent = "";
-    document.getElementById("needNumber").textContent = "";
-    document.getElementById("validEmail").textContent = "";
-
-    if (isNaN(nrOfTickets) || nrOfTickets === "") { // check if input is not a number, source: https://www.w3schools.com/jsref/jsref_isnan.asp#:~:text=Description,a%20number%20before%20testing%20it.
-        document.getElementById("errorNumbers").textContent = "Du må velge antall biletter.";
-    }
-    if (name === "") {
-        document.getElementById("needToWriteSomething").textContent = "Navnet må fylles ut.";
-    }
-    if (surname === "") {
-        document.getElementById("needToWriteSomething2").textContent = "Etternavnet må fylles ut.";
-    }
-    if (!/^\d{8}$/.test(phonenr)) { // check if phone nr is correct (has 8 digits)
-        document.getElementById("needNumber").textContent = "Skriv inn riktig mobilnummer.";
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // check if email is correct
-        document.getElementById("validEmail").textContent = "Skriv inn riktig e-post.";
-    }
-
-    // Clear input fields after successful input
     if (isNaN(nrOfTickets) || nrOfTickets === "" || name === "" || surname === "" || !/^\d{8}$/.test(phonenr) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        // Do not clear if any validation fails
+        // Display validation errors if any
+        if (isNaN(nrOfTickets) || nrOfTickets === "") {
+            $("#errorNumbers").text("Du må velge antall biletter.");
+        }
+        if (name === "") {
+            $("#needToWriteSomething").text("Navnet må fylles ut.");
+        }
+        if (surname === "") {
+            $("#needToWriteSomething2").text("Etternavnet må fylles ut.");
+        }
+        if (!/^\d{8}$/.test(phonenr)) {
+            $("#needNumber").text("Skriv inn riktig mobilnummer.");
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            $("#validEmail").text("Skriv inn riktig e-post.");
+        }
     } else {
         // Create a ticket order object
         var ticketOrder = {
@@ -49,11 +42,7 @@ function searchFail() {
         ticketOrders.push(ticketOrder);
 
         // Clear input fields
-        document.getElementById("nrOfTickets").value = "";
-        document.getElementById("name").value = "";
-        document.getElementById("surname").value = "";
-        document.getElementById("phonenr").value = "";
-        document.getElementById("email").value = "";
+        $("#nrOfTickets, #name, #surname, #phonenr, #email").val("");
 
         // Update ticket list
         displayTicketOrders();
@@ -62,7 +51,7 @@ function searchFail() {
 
 // Function to show orders
 function displayTicketOrders() {
-    var output = "<table><tr><th>Navn</th><th>Etternavn</th><th>Antall billetter</th><th>Telefonnr</th><th>E-post</th></tr>";
+    var output = "<table class='table table-striped'><tr><th>Navn</th><th>Etternavn</th><th>Antall billetter</th><th>Telefonnr</th><th>E-post</th></tr>";
 
     // Loop through each ticket order in the ticketOrders array
     for (var i = 0; i < ticketOrders.length; i++) {
@@ -78,7 +67,7 @@ function displayTicketOrders() {
     output += "</table>";
 
     // Display the order table in the HTML
-    document.getElementById("ticketOrderTable").innerHTML = output;
+    $("#ticketOrderTable").html(output);
 }
 
 // Function to delete all ticket orders
