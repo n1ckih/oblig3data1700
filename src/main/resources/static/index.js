@@ -13,7 +13,7 @@ function formaterFilmer(filmerData) {
     let forrigeFilm = "";
     ut += "<option>Velg Film</option>";
 
-    for (const film of filmerData) { // Renamed the loop variable to avoid conflict
+    for (const film of filmerData) {
         if (film.filmName != forrigeFilm) {
             ut += "<option>" + film.filmName + "</option>";
         }
