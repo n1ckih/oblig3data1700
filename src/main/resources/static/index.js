@@ -1,3 +1,28 @@
+$(function () {
+    hentAlleFilmer();
+});
+
+function hentAlleFilmer() {
+    $.get("/hentFilm", function (filmer) {
+        formaterFilmer(filmer); // Pass the received films to the formatting function
+    });
+}
+
+function formaterFilmer(filmerData) {
+    let ut = "<select id='valgtFilm'>";
+    let forrigeFilm = "";
+    ut += "<option>Velg Film</option>";
+
+    for (const film of filmerData) { // Renamed the loop variable to avoid conflict
+        if (film.filmName != forrigeFilm) {
+            ut += "<option>" + film.filmName + "</option>";
+        }
+        forrigeFilm = film.filmName;
+    }
+    ut += "</select>";
+    $("#chooseFilm").html(ut); // Update the dropdown menu in the HTML
+}
+
 // Array to store orders
 var ticketOrders = [];
 

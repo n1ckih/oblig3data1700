@@ -1,6 +1,16 @@
 package com.example.oblig3data1700;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Bilett")
 public class KinoBiletter {
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
     private String surname;
     private String nrOfTickets;
@@ -15,6 +25,14 @@ public class KinoBiletter {
         this.email = email;
     }
     public KinoBiletter () { }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
